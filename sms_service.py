@@ -14,7 +14,3 @@ class SmsService:
                  )
 
         return message.sid
-
-
-sms = SmsService()
-sms.send_message('+12056023104')
