@@ -27,4 +27,4 @@ tablib==1.1.0
 urllib3==1.25.8
 Werkzeug==1.0.0
 numpy==1.18.1
-twilio==5.7.0
+twilio~=6.0.0
