@@ -1,15 +1,23 @@
 import os
 import sms_service
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
+from sms_service import SmsService
 
 def create_app():
     app = Flask(__name__)
+
+
+    @app.route("/request", methods=['POST'])
+    def request_notif():
+        data = request.get_json(force=True)
+        message = SmsService()
+        return message.appointment_request(data['phone_number'], data['name'], data['time'])
+
+
+
     return app
 
-    @app.route("/", methods=['GET'])
-    def hello_world():
-        return "Hello World"
 
 app = create_app()
 
