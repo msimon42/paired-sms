@@ -11,9 +11,11 @@ def create_app():
     @app.route("/request", methods=['POST'])
     def request_notif():
         data = request.get_json(force=True)
-        message = SmsService()
-        return message.appointment_request(data['phone_number'], data['name'], data['time'])
-
+        if data['sms_token'] == os.environ['SMS_TOKEN']:
+            message = SmsService()
+            return message.appointment_request(data['phone_number'], data['name'], data['time'])
+        else:
+            return 'Invalid token. Message not sent.'
 
 
     return app
