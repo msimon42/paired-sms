@@ -6,7 +6,7 @@ from sms_service import SmsService
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/request", methods=['POST'])
 def request_notif():
