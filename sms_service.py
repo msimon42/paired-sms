@@ -1,9 +1,10 @@
 from twilio.rest import Client
+import os
 
 class SmsService:
     def __init__(self):
-        self.account_sid = 'AC2941d98ae9b3e95cbdd26ab748b51bed'
-        self.auth_token = 'b9425062024348ef6467d815848ee4f8'
+        self.account_sid = os.environ['TWILIO_SID']
+        self.auth_token = os.environ['TWILIO_KEY']
         self.client = Client(self.account_sid, self.auth_token)
 
     def appointment_confirmation(self, phone_number):
