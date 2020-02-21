@@ -30,7 +30,7 @@ https://paired-sms.herokuapp.com
 tool of your choice to `localhost:5000/request`. The body of your request should be formatted as
 follows:
 
-    ```{
+   ``` {
           'phone_number': '3035559823'
           'message': 'Hello! This is a text message'
           'sms_token': 'YOUR SMS TOKEN'
