@@ -30,12 +30,12 @@ https://paired-sms.herokuapp.com
 tool of your choice to `localhost:5000/request`. The body of your request should be formatted as
 follows:
 
-     ` {
+        {
           'phone_number': '3035559823'
           'message': 'Hello! This is a text message'
           'sms_token': 'YOUR SMS TOKEN'
         }
-        `
+  
 The recipient's phone number must be in the exact format as in the example above. The sms token
 is a secret token that must be valid in order to use this service. Contact the owner of this repo
 if you would like to request a token.
