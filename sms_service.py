@@ -1,4 +1,6 @@
 from twilio.rest import Client
+from flask import jsonify
+from helpers import generate_response
 import os
 
 class SmsService:
@@ -13,5 +15,7 @@ class SmsService:
                      from_='+17147331519',
                      to=phone_number
                  )
-
-        return message.sid
+        if message.sid:
+            return generate_response('success')
+        else:
+            return generate_response('Twilio error')
