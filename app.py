@@ -1,6 +1,6 @@
 import os
 import sms_service
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 from sms_service import SmsService
 from helpers import convert_to_international, generate_response
@@ -8,6 +8,11 @@ from validate_request import ValidateRequest
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/", methods=['GET'])
+def root():
+    return render_template('welcome.html')
+
 
 @app.route("/request", methods=['POST'])
 def request_notif():
