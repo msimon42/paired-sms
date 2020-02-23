@@ -1,4 +1,5 @@
 import os
+from helpers import digits
 
 class ValidateRequest:
 
@@ -16,15 +17,14 @@ class ValidateRequest:
         valid = {'phone_number', 'message', 'sms_token'}
         return valid == set(keys)
 
-    def valid_phone_number(self, number):
-        valid_chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-        li_number = list(number)
+    def valid_phone_number(self, phone_number):
+        valid_chars = digits()
 
-        for number in li_number:
+        for number in phone_number:
             if number not in valid_chars:
-                li_number.remove(number)
+                phone_number = phone_number.replace(number, '')
 
-        return len(li_number) == 10
+        return len(phone_number) == 10
 
     def valid_token(self, token):
         return token == os.environ['SMS_TOKEN']

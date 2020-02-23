@@ -6,3 +6,6 @@ def convert_to_international(number):
 
 def generate_response(type):
     return jsonify({'response': type})
+
+def digits():
+    return ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
