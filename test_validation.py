@@ -30,6 +30,7 @@ class TestValidation:
         assert self.validation.valid_phone_number('3034345603')
         assert not self.validation.valid_phone_number('3034sdf603')
         assert not self.validation.valid_phone_number('30343456033')
+        assert not self.validation.valid_phone_number('')
 
     def test_valid_token(self):
         assert self.validation.valid_token(os.environ['SMS_TOKEN'])
