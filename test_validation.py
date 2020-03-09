@@ -16,11 +16,18 @@ class TestValidation:
             "sms_token": 'lol'
         }
 
+        self.data_3 = {
+            "phone_number": "",
+            "message": "Hello!",
+            "sms_token": os.environ['SMS_TOKEN']
+        }
+
         self.validation = ValidateRequest()
 
     def test_run(self):
         assert self.validation.run(self.data_1)
         assert not self.validation.run(self.data_2)
+        assert not self.validation.run(self.data_3)
 
     def test_valid_keys(self):
         assert self.validation.valid_keys(['phone_number', 'message', 'sms_token'])
@@ -30,6 +37,7 @@ class TestValidation:
         assert self.validation.valid_phone_number('3034345603')
         assert not self.validation.valid_phone_number('3034sdf603')
         assert not self.validation.valid_phone_number('30343456033')
+        assert not self.validation.valid_phone_number('')
 
     def test_valid_token(self):
         assert self.validation.valid_token(os.environ['SMS_TOKEN'])
